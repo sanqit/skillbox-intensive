@@ -83,13 +83,13 @@ func main() {
             for key, value := range db[userId] {
                 //targetCurrency := "USDT"
                 targetCurrency := "RUB"
-                usdPrice, err := getPrice(key, targetCurrency)
+                price, err := getPrice(key, targetCurrency)
                 if err != nil {
                     bot.Send(tgbotapi.NewMessage(update.Message.Chat.ID, err.Error()))
                     continue
                 }
 
-                resp += fmt.Sprintf("%s: %s\n", key, formatPrice(value * usdPrice, targetCurrency))
+                resp += fmt.Sprintf("%s: %s\n", key, formatPrice(value * price, targetCurrency))
             }
 
             if resp == "" {
@@ -135,5 +135,5 @@ func getPrice(from string, to string) (float64, error) {
 }
 
 func getToken() string {
-    return "MyAwesomeBotToken"
+    return "1906458497:AAFApoE429KTjQNcrjlRkBmZyN4H2fbGn9U"
 }
